@@ -1,4 +1,3 @@
-
 #include "tic_tac_toe.h"
 #include <iostream>
 
@@ -9,8 +8,10 @@ int main()
 	TicTacToe game;
 
 	string first_player = "";
-	cout<<"enter first player: ";
+	do{
+	cout<<"Please input first player: ";
 	cin>>first_player;
+	}while(first_player!="X"&&first_player!="O");
 
 	string exitgame;
 	do
@@ -19,13 +20,18 @@ int main()
 		while (!game.game_over())
 		{
 			int pos;
-			cout<<"enter position: ";
+			do{
+			cout<<"input position: ";
 			cin>>pos;
+			}while(pos<1||pos>9);
+
 			game.mark_board(pos);
 			game.display_board();
 		}
 
-		cout<<"exit? (y/n): ";
+		cout<<game.get_winner()<<" has won the game!\n"; 
+
+		cout<<"Leave?? (y/n): ";
 		cin>>exitgame;	
 
 	} while (exitgame!="y");
